@@ -5,7 +5,7 @@ import {Pargraph} from '../texts';
 import OfferingCard from './OfferingCard';
 import styles from './offerings.styles';
 
-const Offerings = ({data}) => {
+const Offerings = ({data, navigation}) => {
   const [veg, setVeg] = useState(true);
   const [nonVeg, setNonVeg] = useState(true);
 
@@ -38,7 +38,14 @@ const Offerings = ({data}) => {
         </TouchableOpacity>
       </View>
       {data.items.map(ele => {
-        return <OfferingCard data={ele} nonVeg={nonVeg} veg={veg} />;
+        return (
+          <OfferingCard
+            data={ele}
+            nonVeg={nonVeg}
+            veg={veg}
+            navigation={navigation}
+          />
+        );
       })}
     </View>
   );

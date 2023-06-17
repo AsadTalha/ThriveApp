@@ -7,8 +7,8 @@ const H1 = ({text}) => {
   return <Text style={styles.h1}>{text}</Text>;
 };
 
-const H2 = ({text}) => {
-  return <Text style={styles.h2}>{text}</Text>;
+const H2 = ({text, passedStyles}) => {
+  return <Text style={[styles.h2, passedStyles]}>{text}</Text>;
 };
 
 const H3 = ({text}) => {

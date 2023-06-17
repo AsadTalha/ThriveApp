@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
 import {H3, Pargraph, Legend} from '../texts';
 
 import styles from './offerings.styles';
-const OfferingCard = ({data, nonVeg, veg}) => {
+const OfferingCard = ({data, nonVeg, veg, navigation}) => {
   if (data.item_type === 'non-veg' && !nonVeg) {
     return null;
   }
@@ -11,30 +11,32 @@ const OfferingCard = ({data, nonVeg, veg}) => {
     return null;
   }
   return (
-    <View style={styles.cardContainer}>
-      <View>
-        <Image
-          style={styles.images}
-          source={data.image ? {uri: data.image} : data.localImage}
-          alt="No image"
-        />
+    <TouchableOpacity onPress={() => navigation.navigate('Dish', data)}>
+      <View style={styles.cardContainer}>
+        <View>
+          <Image
+            style={styles.images}
+            source={data.image ? {uri: data.image} : data.localImage}
+            alt="No image"
+          />
+        </View>
+        <View style={styles.textContainer}>
+          <H3 text={data.name} />
+          <Legend passedStyles={{marginTop: 8}} text={data.smallDesc} />
+        </View>
+        <View style={styles.priceContainer}>
+          <Image
+            style={styles.tag}
+            source={
+              data.item_type === 'non-veg'
+                ? require('../../../assets/nonveg.png')
+                : require('../../../assets/veg.png')
+            }
+          />
+          <Pargraph text={`₹${data.price}`} />
+        </View>
       </View>
-      <View style={styles.textContainer}>
-        <H3 text={data.name} />
-        <Legend passedStyles={{marginTop: 8}} text={data.smallDesc} />
-      </View>
-      <View style={styles.priceContainer}>
-        <Image
-          style={styles.tag}
-          source={
-            data.item_type === 'non-veg'
-              ? require('../../../assets/nonveg.png')
-              : require('../../../assets/veg.png')
-          }
-        />
-        <Pargraph text={`₹${data.price}`} />
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

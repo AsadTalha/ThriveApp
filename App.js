@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {store} from './src/store';
 import Dashboard from './src/screen/Dashboard';
 import Restaurant from './src/screen/Restaurant';
+import Dish from './src/screen/Dish';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,11 @@ function App() {
           <Stack.Screen
             name="Restaurant"
             component={Restaurant}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Dish"
+            component={Dish}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

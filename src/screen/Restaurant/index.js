@@ -38,7 +38,7 @@ function Restaurant() {
           navigation={navigation}
           additionalData={restaurantData.data.additionalData}
         />
-        <Offerings data={restaurantData.data} />
+        <Offerings data={restaurantData.data} navigation={navigation} />
       </ScrollView>
     </SafeAreaView>
   );

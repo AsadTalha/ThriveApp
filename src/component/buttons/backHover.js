@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
-const BackHover = ({onPress}) => {
+const BackHover = ({onPress, dark}) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={styles.container}>
+      <View style={[styles.container, dark ? styles.dark : {}]}>
         <Text style={{fontSize: 24}}>←</Text>
       </View>
     </TouchableOpacity>
@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  dark: {
+    backgroundColor: 'rgba(0,0,0,0.1)',
   },
 });
 
