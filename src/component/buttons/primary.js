@@ -3,12 +3,12 @@ import {Text, TouchableOpacity, View, ActivityIndicator} from 'react-native';
 
 import styles from './buttons.styles';
 
-const PrimaryButton = ({text, onPress, isLoading}) => {
+const PrimaryButton = ({text, onPress, isLoading, passedStyles}) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={styles.primaryBtn}>
+      <View style={[styles.primaryBtn, passedStyles]}>
         {!isLoading ? (
-          <Text style={styles.primaryBtnText}>{text}</Text>
+          <Text style={[styles.primaryBtnText]}>{text}</Text>
         ) : (
           <ActivityIndicator size="small" color="#0000ff" />
         )}

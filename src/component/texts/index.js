@@ -11,8 +11,8 @@ const H2 = ({text, passedStyles}) => {
   return <Text style={[styles.h2, passedStyles]}>{text}</Text>;
 };
 
-const H3 = ({text}) => {
-  return <Text style={styles.h3}>{text}</Text>;
+const H3 = ({text, passedStyles}) => {
+  return <Text style={[styles.h3, passedStyles]}>{text}</Text>;
 };
 
 const Pargraph = ({text, passedStyles}) => {

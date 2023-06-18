@@ -3,7 +3,7 @@ import {View, Image, TouchableOpacity} from 'react-native';
 import {H3, Pargraph, Legend} from '../texts';
 
 import styles from './offerings.styles';
-const OfferingCard = ({data, nonVeg, veg, navigation}) => {
+const OfferingCard = ({data, nonVeg, veg, navigation, restrauntData}) => {
   if (data.item_type === 'non-veg' && !nonVeg) {
     return null;
   }
@@ -11,7 +11,8 @@ const OfferingCard = ({data, nonVeg, veg, navigation}) => {
     return null;
   }
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Dish', data)}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Dish', {data, restrauntData})}>
       <View style={styles.cardContainer}>
         <View>
           <Image

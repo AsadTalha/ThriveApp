@@ -40,6 +40,7 @@ const Offerings = ({data, navigation}) => {
       {data.items.map(ele => {
         return (
           <OfferingCard
+            restrauntData={{...data.additionalData, ...data.tax_applicable}}
             data={ele}
             nonVeg={nonVeg}
             veg={veg}

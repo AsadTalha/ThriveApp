@@ -8,6 +8,9 @@ import {store} from './src/store';
 import Dashboard from './src/screen/Dashboard';
 import Restaurant from './src/screen/Restaurant';
 import Dish from './src/screen/Dish';
+import Cart from './src/screen/Cart';
+import Checkout from './src/screen/Checkout';
+import PaymentSucess from './src/screen/PaymentSucess';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +35,21 @@ function App() {
           <Stack.Screen
             name="Dish"
             component={Dish}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Cart"
+            component={Cart}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Checkout"
+            component={Checkout}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="PaymentSucess"
+            component={PaymentSucess}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
