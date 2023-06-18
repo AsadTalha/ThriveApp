@@ -36,11 +36,13 @@ const Cart = props => {
           <H2 style={{color: '#101010'}} text={restrauntData.name} />
           {Object.values(cartData.data).map(element => {
             return (
-              <CartItem
-                data={element}
-                addItemHandler={addItemHandler}
-                removeItemHandler={removeItemHandler}
-              />
+              <View key={element.name}>
+                <CartItem
+                  data={element}
+                  addItemHandler={addItemHandler}
+                  removeItemHandler={removeItemHandler}
+                />
+              </View>
             );
           })}
         </View>

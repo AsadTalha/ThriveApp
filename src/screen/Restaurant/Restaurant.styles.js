@@ -12,6 +12,15 @@ const styles = StyleSheet.create({
     left: 20,
     top: 20,
   },
+  cartHoverContainer: {
+    position: 'absolute',
+    right: 20,
+    bottom: 30,
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    borderRadius: 50,
+    padding: 8,
+  },
+  cartHoverImage: {width: 40, height: 40},
 });
 
 export default styles;

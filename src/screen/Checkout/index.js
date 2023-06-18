@@ -39,8 +39,7 @@ const paymentMedods = [
 ];
 
 const Checkout = props => {
-  const [subTotal, setSubTotal] = useState(0);
-  const [taxValue, setTaxValue] = useState(0);
+  const [sku, setSKU] = useState([]);
   const [active, setActive] = useState('');
   const navigation = useNavigation();
   const cartData = useSelector(stateCartMemo);
@@ -49,12 +48,20 @@ const Checkout = props => {
   useEffect(() => {
     let totalPrice = 0;
     const allItems = Object.values(cartData.data);
+    const _sku = [];
     allItems.forEach(ele => {
       totalPrice = totalPrice + ele.cartCount * ele.price;
+      const data = {id: ele.id, count: ele.cartCount, name: ele.name};
+      _sku.push(data);
     });
-    setSubTotal(totalPrice);
     const tax = (restaurantData.data.tax_applicable.value * totalPrice) / 100;
-    setTaxValue(Math.floor(tax));
+    const skuData = {
+      sku: _sku,
+      totalPrice,
+      tax,
+      grandTotal: totalPrice + tax,
+    };
+    setSKU(skuData);
   }, [cartData, restaurantData]);
 
   return (
@@ -68,17 +75,17 @@ const Checkout = props => {
         <View style={styles.bill}>
           <View style={styles.priceList}>
             <H2 passedStyles={styles.totalText} text={'Total'} />
-            <H2 passedStyles={styles.totalText} text={subTotal} />
+            <H2 passedStyles={styles.totalText} text={sku.totalPrice} />
           </View>
           <View style={styles.priceList}>
             <H2 passedStyles={styles.totalText} text={'Tax amount'} />
-            <H2 passedStyles={styles.totalText} text={taxValue} />
+            <H2 passedStyles={styles.totalText} text={sku.tax} />
           </View>
           <View style={[styles.priceList, styles.borderTop]}>
             <H2 passedStyles={styles.grandTotalText} text={'Grand total'} />
             <H2
               passedStyles={styles.grandTotalText}
-              text={subTotal + taxValue}
+              text={sku.totalPrice + sku.tax}
             />
           </View>
         </View>
@@ -95,7 +102,7 @@ const Checkout = props => {
         <PrimaryButton
           passedStyles={{backgroundColor: '#89f58b'}}
           text={'Pay'}
-          onPress={() => navigation.navigate('PaymentSucess')}
+          onPress={() => navigation.navigate('PaymentSucess', sku)}
         />
       </View>
     </SafeAreaView>

@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   useEffect(() => {
-    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+    LogBox.ignoreAllLogs();
   }, []);
   return (
     <Provider store={store}>

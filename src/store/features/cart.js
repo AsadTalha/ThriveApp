@@ -36,7 +36,8 @@ const cartSlice = createSlice({
       }
     },
     clearCart(state) {
-      state = initialState;
+      console.log('===============');
+      state.data = null;
     },
   },
 });

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, View, TouchableOpacity} from 'react-native';
+import {Image, View, TouchableOpacity, FlatList} from 'react-native';
 
 import {Pargraph} from '../texts';
 import OfferingCard from './OfferingCard';
@@ -37,7 +37,7 @@ const Offerings = ({data, navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-      {data.items.map(ele => {
+      {/* {data.items.map(ele => {
         return (
           <OfferingCard
             restrauntData={{...data.additionalData, ...data.tax_applicable}}
@@ -47,7 +47,22 @@ const Offerings = ({data, navigation}) => {
             navigation={navigation}
           />
         );
-      })}
+      })} */}
+      <FlatList
+        data={data.items}
+        renderItem={({item}) => {
+          return (
+            <OfferingCard
+              restrauntData={{...data.additionalData, ...data.tax_applicable}}
+              data={item}
+              nonVeg={nonVeg}
+              veg={veg}
+              navigation={navigation}
+            />
+          );
+        }}
+        keyExtractor={item => item.id}
+      />
     </View>
   );
 };

@@ -1,5 +1,12 @@
 import React, {useEffect} from 'react';
-import {SafeAreaView, View, ScrollView} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  ScrollView,
+  Image,
+  Touchable,
+  TouchableOpacity,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
@@ -11,12 +18,13 @@ import styles from './Restaurant.styles';
 import {H1, Legend} from '../../component/texts';
 import RestaurantHero from '../../component/restaurantHero';
 import Offerings from '../../component/offerings';
+import {stateCartMemo} from '../../store/features/cart';
 
 function Restaurant() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const restaurantData = useSelector(stateRestaurant);
-
+  const cartData = useSelector(stateCartMemo);
   //To fetch chatroom data
   useEffect(() => {
     dispatch(fetchRestaurantdata());
@@ -40,6 +48,21 @@ function Restaurant() {
         />
         <Offerings data={restaurantData.data} navigation={navigation} />
       </ScrollView>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('Cart', {
+            restrauntData: restaurantData.data.additionalData,
+          })
+        }>
+        {cartData.data === null ? null : (
+          <View style={styles.cartHoverContainer}>
+            <Image
+              style={styles.cartHoverImage}
+              source={require('../../../assets/cart.png')}
+            />
+          </View>
+        )}
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
