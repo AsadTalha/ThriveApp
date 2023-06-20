@@ -43,13 +43,15 @@ function Dashboard() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image
-        style={styles.image}
-        source={require('../../../assets/landing.jpg')}
-      />
-      <View style={styles.textContainer}>
-        <H1 text="Food to blow your mind!" />
-        <Legend text="Whether you're craving pizza, sushi, or something in between, we have got your back" />
+      <View style={{marginTop: '10%'}}>
+        <Image
+          style={styles.image}
+          source={require('../../../assets/landing.jpg')}
+        />
+        <View style={styles.textContainer}>
+          <H1 text="Food to blow your mind!" />
+          <Legend text="Whether you're craving pizza, sushi, or something in between, we have got your back" />
+        </View>
       </View>
       <View style={styles.footerHover}>
         <PrimaryButton

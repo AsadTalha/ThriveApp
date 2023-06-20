@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   bill: {
-    margin: 40,
+    marginHorizontal: 40,
     marginBottom: 14,
+    marginTop: '20%',
   },
   totalText: {
     fontWeight: 'bold',

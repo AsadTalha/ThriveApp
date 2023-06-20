@@ -1,11 +1,16 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Platform} from 'react-native';
 
 const BackHover = ({onPress, dark}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.container, dark ? styles.dark : {}]}>
-        <Text style={{fontSize: 24}}>←</Text>
+        <Text
+          style={
+            Platform.OS === 'android' ? styles.androidStyle : styles.iosStyle
+          }>
+          ←
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -24,6 +29,8 @@ const styles = StyleSheet.create({
   dark: {
     backgroundColor: 'rgba(0,0,0,0.1)',
   },
+  androidStyle: {fontSize: 30, fontWeight: '900', marginBottom: 12},
+  iosStyle: {fontSize: 24},
 });
 
 export default BackHover;

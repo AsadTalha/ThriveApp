@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   image: {
-    marginTop: '4%',
+    // marginVertical: 'auto',
   },
   textContainer: {
     width: '86%',

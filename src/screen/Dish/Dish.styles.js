@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
   title: {fontWeight: 'bold', maxWidth: 240},
   price: {color: '#FFA500'},
   images: {
-    width: 332,
+    width: '92%',
     height: 200,
     alignSelf: 'center',
-    marginTop: 30,
+    marginTop: '20%',
     marginBottom: 30,
     borderRadius: 14,
   },
